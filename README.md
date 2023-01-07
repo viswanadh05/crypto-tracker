@@ -1,6 +1,9 @@
 # Spring-boot-crypto-price-tracker
 Java Spring boot project to get coin rank API data and display JSON response on UI
 
+Live project view:
+[Spring-boot-crypto-price-tracker](https://spring-boot-trackerapp.herokuapp.com/)
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
