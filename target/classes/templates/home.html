@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<!-- Viswanadh Bhaskarla - Tracker app | Spring MVC | coinrank API Integration -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Tracker App</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link th:href="@{/main.css}" rel="stylesheet" />
+
+
+<script type="text/javascript">
+	//JS Function to display negative values in red color and positive values in green color
+	function redText() {
+		var elements = document.getElementsByTagName('pre')
+		for (i = 0; i < elements.length; i++) {
+			if (elements[i].innerHTML < 0) {
+				elements[i].classList.add('currency-neg');
+			}
+			;
+		}
+	}
+
+	//JS Function to display numbers formatted with commas for every 3 digits.
+	function numberWithCommas() {
+		var elements = document.getElementsByTagName('p')
+		for (i = 0; i < elements.length; i++) {
+			//element.innerHTML = newHTML;
+			elements[i].innerHTML = elements[i].innerHTML.toString().replace(
+					/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+	}
+	
+	//JS Function to search results by coin name.
+	function myFunction() {
+		// Declare variables
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
+
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[1];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h1>Crypto coin Data</h1>
+
+		<br></br>
+
+		<h2>Spring boot tracker API app for crypto currency data</h2>
+
+		<br></br>
+		
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for coins..">
+		
+		<table id="myTable" class="table table-dark table-striped table-hover">
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Symbol</th>
+				<th>Price</th>
+				<th>Rank</th>
+				<th>Change</th>
+				<th>Market Cap</th>
+			</tr>
+
+			<tr th:each="coins : ${coinData}">
+
+				<td><img th:src="${coins.url}" width="30" height="30"></td>
+
+				<td th:text="${coins.name}" class="text-white"></td>
+				<td th:text="${coins.symbol}" class="text-white"></td>
+				<td><pre th:text="${coins.price}" class="currency-pos"></pre></td>
+				<td th:text="${coins.rank}" class="text-white"></td>
+				<td><pre th:text="${coins.change}" class="percent currency-pos"></pre></td>
+				<td><p th:text="${coins.marketCap}" class="currency text-white"></p></td>
+			</tr>
+
+		</table>
+		<script>
+			redText();
+			numberWithCommas();
+		</script>
+
+	</div>
+
+	<p>
+		<a href="../home.html" th:href="@{/}">Return to home</a>
+	</p>
+
+</body>
+
+</html>
