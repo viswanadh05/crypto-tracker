@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.vish.trackerapp.TrackerConfigProperties;
-import com.vish.trackerapp.model.CoinDTO;
+import com.vish.trackerapp.model.Coin;
 
 import jakarta.annotation.PostConstruct;
 import okhttp3.OkHttpClient;
@@ -29,7 +29,7 @@ import org.json.JSONObject;
 @RequestMapping("/secret")
 public class APIService {
 		
-	private List<CoinDTO> coinList = new ArrayList<>();
+	private List<Coin> coinList = new ArrayList<>();
 	
 	private final TrackerConfigProperties trackerConfig;
 	
@@ -38,18 +38,18 @@ public class APIService {
 		this.trackerConfig = trackerConfig;
 	}
 	
-	public List<CoinDTO> getCoinList() {
+	public List<Coin> getCoinList() {
 		return coinList;
 	}
 
-	public void setCoinList(List<CoinDTO> coinList) {
+	public void setCoinList(List<Coin> coinList) {
 		this.coinList = coinList;
 	}
 	
 	@PostConstruct
 	@Scheduled(cron = "* * 1 * * *")
 	public void getAPIData() throws IOException, JSONException{		
-		List<CoinDTO> newData = new ArrayList<>();
+		List<Coin> newData = new ArrayList<>();
 		OkHttpClient client = new OkHttpClient();
 		
 		JSONObject obj = null;
@@ -79,7 +79,7 @@ public class APIService {
 			System.out.println(arr);
 			
 			for(int i=0; i<arr.length(); i++) {
-				CoinDTO coinRecords = new CoinDTO();
+				Coin coinRecords = new Coin();
 				coinRecords.setName(arr.getJSONObject(i).getString("name"));
 				coinRecords.setSymbol(arr.getJSONObject(i).getString("symbol"));
 				coinRecords.setPrice(arr.getJSONObject(i).getFloat("price"));
