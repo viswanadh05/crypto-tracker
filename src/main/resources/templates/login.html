@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<!-- Viswanadh Bhaskarla - Tracker app | Spring MVC | coinrank API Integration -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="/header">
+<head>
+<title>Tracker App</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+	crossorigin="anonymous">
+<link th:href="@{/main.css}" rel="stylesheet" />
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+	crossorigin="anonymous"></script>
+<script src="/script.js"></script>
+</head>
+
+<body>
+	<nav th:replace="~{/header :: header}"></nav>
+	<div class="container-fluid back">
+		<div class="div-center">
+			<div class="content">
+				<h3>Login</h3>
+				<hr />
+				<form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+					</div>
+					<br>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" id="exampleInputPassword1"
+							placeholder="Password">
+					</div>
+					<br>
+					<button type="submit" class="btn btn-primary">Login</button>
+					<hr />
+					<a href="signup">
+						<button type="button" class="btn btn-link">Signup</button>
+					</a>
+					<a href="">
+						<button type="button" class="btn btn-link">Reset password</button>
+					</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
