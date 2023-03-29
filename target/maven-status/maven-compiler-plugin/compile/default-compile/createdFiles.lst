@@ -1,6 +1,6 @@
+com\vish\trackerapp\TrackerappApplication.class
+META-INF\spring-configuration-metadata.json
 com\vish\trackerapp\TrackerConfigProperties.class
 com\vish\trackerapp\service\APIService.class
+com\vish\trackerapp\model\Coin.class
 com\vish\trackerapp\controller\MainController.class
-com\vish\trackerapp\TrackerappApplication.class
-com\vish\trackerapp\model\CoinDTO.class
-META-INF\spring-configuration-metadata.json

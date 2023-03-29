@@ -5,7 +5,7 @@ package com.vish.trackerapp.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CoinDTO {
+public class Coin {
 	private String name;
 	private String symbol;
 	private String url;
